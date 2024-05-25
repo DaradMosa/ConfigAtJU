@@ -8,7 +8,7 @@ function buttonPressed(buttonName, url) {
     }
 
     // Update the text in the 'last-buttons' span
-    document.getElementById('last-buttons').innerText = lastPressedButtons.join(', ');
+    //document.getElementById('last-buttons').innerText = lastPressedButtons.join(', ');
 
     // Navigate to the specified URL
     window.location.href = url;

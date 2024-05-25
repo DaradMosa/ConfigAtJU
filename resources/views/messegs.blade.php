@@ -1,13 +1,7 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Page with Buttons and Logo</title>
-    <link rel="stylesheet" href="messeg.css">
-</head>
-<body>
+@extends('layouts.messegs')
+
+@section('content')
     <div class="container">
         <div class="logo-section">
             <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/University_of_Jordan_Logo.svg" alt="Logo" class="logo">
@@ -21,3 +15,4 @@
     </div>
 </body>
 </html>
+@endsection

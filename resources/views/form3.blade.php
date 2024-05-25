@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تعديل مسمى قسم أكاديمي / كلية</title>
-    <link rel="stylesheet" href="form3.css">
-</head>
-<body>
+@extends('layouts.app4')
+
+@section('content')
     <div class="container">
         <div class="header">
             <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/University_of_Jordan_Logo.svg" alt="شعار الجامعة" class="logo">
@@ -70,5 +64,4 @@
             <button class="submit-button">Submit</button>
           </div>
     </div>
-</body>
-</html>
+@endsection

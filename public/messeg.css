@@ -4,7 +4,6 @@ body {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
-    align-items: center;
     height: 100vh;
     background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/42/View_of_the_University_of_Jordan_campus.jpg');
     background-size: cover;
@@ -12,6 +11,19 @@ body {
     
 }
 
+
+#app{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+#nav{
+    width: 100%;
+}
+main{
+    width: 100%;
+}
 .container {
     display: flex;
     width: 80%;
