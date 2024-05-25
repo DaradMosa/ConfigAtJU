@@ -37,7 +37,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
+                    <ul id="drop" class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -54,7 +54,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"  alt="User Picture" class="user-pic" height="10px">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"  alt="User Picture"  height="30px">
                                 {{ Auth::user()->name }}
                                 </a>
 

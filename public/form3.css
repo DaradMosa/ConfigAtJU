@@ -1,11 +1,11 @@
 body {
     font-family: 'Arial', sans-serif;
-    direction: rtl;
+
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
 }
-.container {
+.contain {
     width: 60%;
     margin: auto;
     border: 1px solid #000;
@@ -79,3 +79,7 @@ body {
     background-color: #45a049; /* لون خلفية الزر عند التحويل عليه */
   }
   
+  main{
+    direction: rtl;
+
+  }

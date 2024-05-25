@@ -1,11 +1,9 @@
 @extends('layouts.app4')
 
 @section('content')
-    <div class="container">
+    <div class="contain">
         <div class="header">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/University_of_Jordan_Logo.svg" alt="شعار الجامعة" class="logo">
             <h1>تعديل مسمى قسم أكاديمي / كلية</h1>
-            <img src="logo2.png" alt="شعار آخر" class="logo">
         </div>
 
         <div class="form-group">
