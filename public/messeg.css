@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/42/View_of_the_University_of_Jordan_campus.jpg');
+    background-size: cover;
+    background-position: center;
+    
+}
+
+.container {
+    display: flex;
+    width: 80%;
+    max-width: 1200px;
+    background-color: rgba(255, 255, 255, 0.8); 
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.logo-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.logo {
+    max-width: 100%;
+    height: 200px;
+    width: 150px;
+}
+
+.buttons-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.big-button {
+    width: 80%;
+    padding: 20px;
+    margin: 10px;
+    font-size: 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.big-button:hover {
+    background-color: #0056b3;
+}

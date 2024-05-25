@@ -1,0 +1,79 @@
+body {
+    font-family: 'Arial', sans-serif;
+    direction: rtl;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+.container {
+    width: 60%;
+    margin: auto;
+    border: 1px solid #000;
+    padding: 10px;
+    background-color: #fff;
+}
+.header {
+    text-align: center;
+    background-color: #22f2a6;
+    padding: 10px 0;
+    border-bottom: 2px solid #004d99; /* لون مستوحى من الشعارات */
+}
+.header img.logo {
+    width: 50px;
+    vertical-align: middle;
+}
+.header h1 {
+    display: inline;
+    font-size: 1.5em;
+    margin: 0 10px;
+    vertical-align: middle;
+    color: #004d99; /* لون مستوحى من الشعارات */
+}
+.form-group {
+    margin: 15px 0;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #004d99; /* لون مستوحى من الشعارات */
+}
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #000;
+}
+.form-group textarea {
+    resize: none;
+    height: 80px;
+}
+.footer {
+    margin-top: 20px;
+    text-align: center;
+}
+.footer p {
+    margin: 10px 0;
+    color: #004d99; /* لون مستوحى من الشعارات */
+}
+.centered-button {
+    display: flex; /* تحويل العناصر إلى flex */
+    justify-content: center; /* توسيط العنصر في الاتجاه الأفقي */
+    
+  }
+  
+  .submit-button {
+    background-color: #4CAF50; /* لون خلفية الزر */
+    color: white; /* لون النص */
+    padding: 10px 20px; /* حجم الهامش الداخلي للزر */
+    font-size: 16px; /* حجم النص */
+    border: none; /* لا حدود */
+    cursor: pointer; /* المؤشر يتحول إلى يد عند التحويل عليه */
+    border-radius: 5px; /* تقويس زوايا الزر */
+  }
+  
+  .submit-button:hover {
+    background-color: #45a049; /* لون خلفية الزر عند التحويل عليه */
+  }
+  
