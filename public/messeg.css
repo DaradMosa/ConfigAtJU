@@ -1,15 +1,59 @@
 body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
     display: flex;
-    justify-content: center;
-    height: 100vh;
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/42/View_of_the_University_of_Jordan_campus.jpg');
-    background-size: cover;
-    background-position: center;
-    
+    flex-direction: column;
+    align-items: center;
 }
+.header {
+    background-color: #5b5c5b;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+.list-container {
+    width: 80%;
+    margin-top: 0px;
+    padding: 20px;
+}
+.form-item {
+    width: 100%;
+    border: 1px solid #acacac;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+.form-item:hover{
+    background-color: aqua;
+}
+.form-item a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+.stats {
+    width: 30%;
+    text-align: right;
+}
+.stats p {
+    margin: 0;
+}
+
 
 
 #app{
@@ -20,54 +64,4 @@ body {
 }
 #nav{
     width: 100%;
-}
-main{
-    width: 100%;
-}
-.container {
-    display: flex;
-    width: 80%;
-    max-width: 1200px;
-    background-color: rgba(255, 255, 255, 0.8); 
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.logo-section {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
-.logo {
-    max-width: 100%;
-    height: 200px;
-    width: 150px;
-}
-
-.buttons-section {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
-.big-button {
-    width: 80%;
-    padding: 20px;
-    margin: 10px;
-    font-size: 20px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.big-button:hover {
-    background-color: #0056b3;
 }

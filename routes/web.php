@@ -1,5 +1,4 @@
 <?php
-$formsDBS = ['academicprogram','department','departmentnamechange','college'];
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -33,7 +32,7 @@ Route::post('/form1', function () {
     ->where('id', $userId)
     ->first();
     $lastInsertId = DB::table('forms')->insertGetId([
-        'level' => $user->level+1,
+        'level' => $user->level+1,  
         'type' => 1,
         'college' => $user->college
     ]);
@@ -87,6 +86,7 @@ Route::post('/form2', function () {
     return redirect('/')->with('mssg','Form saved successfully');
 })->middleware('auth');
 
+
 Route::post('/form3', function () {
     $userId = auth()->id();
     $user = DB::table('users')
@@ -117,13 +117,77 @@ Route::post('/form3', function () {
     return redirect('/')->with('mssg','Form saved successfully');
 })->middleware('auth');
 
+Route::post('/view/{formID}', function ($formID) {
+    $formsDBS = ['department','college','departmentnamechange','academicprogram'];
+    $userId = auth()->id();
+    $form = DB::table('forms')
+    ->where('id', $formID)
+    ->first();
+
+    if($form->level == 7 && request('accept')){
+        DB::table('forms')
+        ->where('id', $formID)
+        ->update([
+            'level' => DB::raw('level + 1'),
+            'status' => 'accepted',
+            'comments' => request('comment')
+        ]);
+    }
+    elseif($form->level == 7){
+        DB::table('forms')
+        ->where('id', $formID)
+        ->update([
+            'level' => DB::raw('level + 1'),
+            'status' => 'rejected',
+            'comments' => request('comment')
+        ]);
+    }
+    else if(request('accept')){
+        DB::table('forms')
+        ->where('id', $formID)
+        ->update([
+            'level' => DB::raw('level + 1'),
+            'comments' => request('comment')
+        ]);
+    }
+    else{
+        DB::table('forms')
+        ->where('id', $formID)
+        ->update([
+            'status' => 'rejected',
+            'comments' => request('comment')
+        ]);
+    }
+
+
+    return redirect('/')->with('mssg','Form saved successfully');
+})->middleware('auth');
+
+Route::get('/view/{formID}', function ($formID) {
+    $formsDBS = ['department','college','departmentnamechange','academicprogram'];
+    $userId = auth()->id();
+    $user = DB::table('users')
+                ->select('level','college','role')
+                ->where('id', $userId)
+                ->first();
+    $form_data = DB::table('forms')
+                ->select('type','level','comments')
+                ->where('id', $formID)
+                ->first();
+    $form_values = DB::table($formsDBS[$form_data->type -1])
+                ->where('id_NUMBER', $formID)
+                ->first();
+
+    return view('forms_view/form'.$form_data->type.'view',['form_values'=> $form_values,'formlvl' => $form_data->level,'userlvl'=>$user->level,'form_comments' => $form_data->comments] );
+})->middleware('auth');
 Route::get('/view', function () {
     $formid = request('formid');
     $form_data = DB::table('forms')
                 ->where('id', $formid)
                 ->first();
+                
   
-    return view('form'.$form_data->type.'view',['form_data'=> $form_data] );
+    return view('/forms_view/form'.$form_data->type.'view',['form_data'=> $form_data] );
 })->middleware('auth');
 
 Route::get('/messegs', function () {
@@ -136,10 +200,13 @@ Route::get('/messegs', function () {
     if($user->role == 'Vice_President' ||$user->role == 'Director_of_Accreditation_Department' ||$user->role == 'Director_of_AQAC'){
         $forms_for_confirmation = DB::table('forms')
                             ->where('level', $user->level)
+                            ->where('status', 'pending')
                             ->orderBy('date', 'asc')
                             ->get();
         $forms_status = DB::table('forms')
                             ->where('level', '>', $user->level)
+                            ->orwhere('status', 'rejected')
+                            ->orwhere('status', 'accepted')
                             ->orderBy('date', 'asc')
                             ->get();
     }
@@ -147,11 +214,14 @@ Route::get('/messegs', function () {
         $forms_for_confirmation = DB::table('forms')
                             ->where('level', $user->level)
                             ->where('college', $user->college)
+                            ->where('status', 'pending')
                             ->orderBy('date', 'asc')
                             ->get();
         $forms_status = DB::table('forms')
                             ->where('level', '>', $user->level)
                             ->where('college', $user->college)
+                            ->orwhere('status', 'rejected')
+                            ->orwhere('status', 'accepted')
                             ->orderBy('date', 'asc')
                             ->get();
     }

@@ -2,33 +2,42 @@
 @extends('layouts.messegs')
 
 @section('content')
-    <div class="container" style="z-index: -100;">
-        <div class="logo-section">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/University_of_Jordan_Logo.svg" alt="Logo" class="logo">
-        </div>
-        <div>
-        <ul>
-            @if($forms_for_confirmation->isEmpty())
-            @else
-                @foreach ($forms_for_confirmation as $form)
-                <li><a href="view?formid={{ $form->id }}">{{ $form->id }} and {{ $form->date }}</a></li>
-                @endforeach
-            @endif
-            @if($forms_status->isEmpty())
+
+<div class="list-container">
+    @if($forms_for_confirmation->isEmpty())
+        @else
+            @foreach ($forms_for_confirmation as $form)
+            <div class="form-item" id="list1">
+            <a href="/view/{{ $form->id }}">
+            <div>{{ $form->id }} {{ $form->date }}</div>
+            <div class="stats">
+                <p>waiting your confirmation</p>
+            </div>
+        </a>
+    </div>
+            @endforeach
+    @endif
+    @if($forms_status->isEmpty())
             @else
                 @foreach ($forms_status as $form)
-                    <li> <a href="view?formid={{ $form->id }}">{{ $form->id }} and {{ $form->date }} staus waiting confirmation from 
-                        @foreach ($username as $user)
-                        @if ($user->level == $form->level &&($user->college ==  $form->college ||$user->college ==  'UJ'))
-                            {{ $user->name }}
-                        @endif
-                        @endforeach
-                    </a></li>
+                    <div class="form-item" id="list1">
+                            <a href="/view/{{ $form->id }}">
+                            <div>{{ $form->id }} {{ $form->date }}</div>
+                            <div class="stats">
+                                <p>status: waiting confirmation from 
+                                @foreach ($username as $user)
+                                @if ($user->level == $form->level &&($user->college ==  $form->college ||$user->college ==  'UJ'))
+                                    {{ $user->name }}
+                                @endif
+                                @endforeach
+                                </p>
+                            </div>
+                        </a>
+                    </div>
                 @endforeach
             @endif
-        </ul>
-        </div>
-    </div>
-</body>
-</html>
+   
+   
+</div>
+
 @endsection
