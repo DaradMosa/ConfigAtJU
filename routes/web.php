@@ -8,32 +8,34 @@ Route::get('/', function () {
 })->middleware('auth');
 
 Route::get('/form1', function () {
-    return view('form1');
+    return view('/forms_entry/form1');
 })->middleware('auth');
 ;
 
 Route::get('/form2', function () {
-    return view('form2');
+    return view('/forms_entry/form2');
 })->middleware('auth');
 ;
 
 Route::get('/form3', function () {
-    return view('form3');
+    return view('/forms_entry/form3');
 })->middleware('auth');
 ;
 
 Route::get('/form4', function () {
-    return view('form4');
+    return view('/forms_entry/form4');
 })->middleware('auth');
 
 Route::post('/form1', function () {
     $userId = auth()->id();
     $user = DB::table('users')
+    ->select('level','college')
     ->where('id', $userId)
     ->first();
     $lastInsertId = DB::table('forms')->insertGetId([
         'level' => $user->level+1,
-        'type' => 1
+        'type' => 1,
+        'college' => $user->college
     ]);
     DB::table('department')->insert([
         'id_NUMBER' => $lastInsertId,
@@ -59,11 +61,13 @@ Route::post('/form1', function () {
 Route::post('/form2', function () {
     $userId = auth()->id();
     $user = DB::table('users')
+    ->select('level','college')
     ->where('id', $userId)
     ->first();
     $lastInsertId = DB::table('forms')->insertGetId([
         'level' => $user->level+1,
-        'type' => 2
+        'type' => 2,
+        'college' => $user->college
     ]);
     DB::table('college')->insert([
         'id_NUMBER' => $lastInsertId,
@@ -86,11 +90,14 @@ Route::post('/form2', function () {
 Route::post('/form3', function () {
     $userId = auth()->id();
     $user = DB::table('users')
+    ->select('level','college')
     ->where('id', $userId)
     ->first();
+  
     $lastInsertId = DB::table('forms')->insertGetId([
         'level' => $user->level+1,
-        'type' => 3
+        'type' => 3,
+        'college' => $user->college
     ]);
     DB::table('departmentnamechange')->insert([
         'id_NUMBER' => $lastInsertId,
@@ -122,21 +129,36 @@ Route::get('/view', function () {
 Route::get('/messegs', function () {
     $userId = auth()->id();
     $user = DB::table('users')
-    ->select('level')
+    ->select('level','college','role')
     ->where('id', $userId)
     ->first();
   
-    $forms_for_confirmation = DB::table('forms')
+    if($user->role == 'Vice_President' ||$user->role == 'Director_of_Accreditation_Department' ||$user->role == 'Director_of_AQAC'){
+        $forms_for_confirmation = DB::table('forms')
                             ->where('level', $user->level)
                             ->orderBy('date', 'asc')
                             ->get();
-    $forms_status = DB::table('forms')
-                    ->where('level', '>', $user->level)
-                    ->orderBy('date', 'asc')
-                    ->get();
+        $forms_status = DB::table('forms')
+                            ->where('level', '>', $user->level)
+                            ->orderBy('date', 'asc')
+                            ->get();
+    }
+    else{
+        $forms_for_confirmation = DB::table('forms')
+                            ->where('level', $user->level)
+                            ->where('college', $user->college)
+                            ->orderBy('date', 'asc')
+                            ->get();
+        $forms_status = DB::table('forms')
+                            ->where('level', '>', $user->level)
+                            ->where('college', $user->college)
+                            ->orderBy('date', 'asc')
+                            ->get();
+    }
+    
     
     $username = DB::table('users')
-    ->select('name','level')
+    ->select('name','level','college')
     ->get();
    
 
