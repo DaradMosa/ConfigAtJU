@@ -1,6 +1,8 @@
 @extends('layouts.app3')
 
 @section('content')
+<form action="/form2" method="POST">
+    @csrf
     <div class="contain">
         <div class="header">
             <h1>استحداث كلية</h1>
@@ -49,7 +51,7 @@
         <div class="form-group">
             <label for="internal-consultations">الاستشارات داخل الجامعة:</label>
             <p>يرجى التزويد بما يثبت استشارة القائمين على استحداث قسم للجهات المعنية في الجامعة مثل مركز الاعتماد وضمان الجودة ، ووحدة الشؤون المالية ، ووحدة القبول والتسجيل ، وعمادة البحث العلمي ، وكلية الدراسات العليا ، وغيرها... </p>
-            <input type="file" id="consultation-file" name="consultation-file">
+            <textarea id="consultation-file" name="consultation-file"></textarea>
         </div>
         <div class="footer">
             <p contenteditable="true">مركز الاعتماد وضمان الجودة:____________________________ التوقيع____________________________</p>
@@ -60,4 +62,6 @@
             <button class="submit-button">Submit</button>
           </div>
     </div>
+</form>
+
 @endsection

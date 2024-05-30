@@ -6,11 +6,27 @@
         <div class="logo-section">
             <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/University_of_Jordan_Logo.svg" alt="Logo" class="logo">
         </div>
-        <div class="buttons-section">
-            <button class="big-button" onclick="window.location.href='form2.html'">طلب استحداث كلية </button>
-            <button class="big-button" onclick="window.location.href='form1.html'">طلب استحداث قسم اكاديمي</button>
-            <button class="big-button" onclick="window.location.href='form3.html'">طلب استحداث برنامج اكاديمي</button>
-            <button class="big-button" onclick="window.location.href='form4.html'">طلب تعديل مسمى اكاديمي أو كلية</button>
+        <div>
+        <ul>
+            @if($forms_for_confirmation->isEmpty())
+            @else
+                @foreach ($forms_for_confirmation as $form)
+                <li><a href="view?formid={{ $form->id }}">{{ $form->id }} and {{ $form->date }}</a></li>
+                @endforeach
+            @endif
+            @if($forms_status->isEmpty())
+            @else
+                @foreach ($forms_status as $form)
+                    <li> <a href="view?formid={{ $form->id }}">{{ $form->id }} and {{ $form->date }} staus waiting confirmation from 
+                        @foreach ($username as $user)
+                        @if ($user->level == $form->level)
+                            {{ $user->name }}
+                        @endif
+                        @endforeach
+                    </a></li>
+                @endforeach
+            @endif
+        </ul>
         </div>
     </div>
 </body>
