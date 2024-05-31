@@ -2,7 +2,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    $no_permission =['1','4','6'];
+    $no_permission =['4'];
     $userId = auth()->id();
     $user = DB::table('users')
     ->select('level')
@@ -121,6 +121,76 @@ Route::post('/form3', function () {
         'required_facilities' => request('required-facilities'),
         'impact_on_programs' => request('similar-departments'),
         'internal_consultations' => request('consultation-file'),
+    ]);
+    return redirect('/')->with('mssg','Form saved successfully');
+})->middleware('auth');
+
+Route::post('/form4', function () {
+    $userId = auth()->id();
+    $user = DB::table('users')
+    ->select('level','college')
+    ->where('id', $userId)
+    ->first();
+  
+    $lastInsertId = DB::table('forms')->insertGetId([
+        'level' => $user->level+1,
+        'type' => 4,
+        'name' => '('.request('program-name-ar').')تعديل مسمى قسم أكاديمي / كلية',
+        'college' => $user->college
+    ]);
+    DB::table('academicprogram')->insert([
+        'id_NUMBER' => $lastInsertId,
+        'program_name_ar' => request('program-name-ar'),
+        'program_name_en' => request('program-name-en'),
+        'program_level' => request('program-level'),
+        'degree_awarded' => request('degree'),
+        'college' => request('faculty'),
+        'department' => request('department'),
+        'department_recommendation' => request('department-recommendation'),
+        'college_recommendation' => request('faculty-recommendation'),
+        'other_departments_involved' => request('other-departments'),
+        'program_duration' => request('program-duration'),
+        'language_of_instruction' => request('language'),
+        'application_date' => request('submission-date'),
+        'program_description' => request('college-name'),
+        'bachelor_start_date' => request('bachelor-start-date'),
+        'bachelor_current_students' => request('bachelor-current-students'),
+        'bachelor_graduates_last-3-years' => request('bachelor-graduates-last-3-years'),
+        'masters_start_date' => request('masters-start-date'),
+        'masters_current_students' => request('masters-current-students'),
+        'masters_graduates_last-3-years' => request('masters-graduates-last-3-years'),
+        'diploma_start_date' => request('diploma-start-date'),
+        'diploma_current_students' => request('diploma-current-students'),
+        'diploma_graduates_last-3-years' => request('diploma-graduates-last-3-years'),
+        'phd_start_date' => request('phd-start-date'),
+        'phd_current_students' => request('phd-current-students'),
+        'phd_graduates_last_3-years' => request('phd-graduates-last-3-years'),
+        'university_relationship' => request('current-department-name'),
+        'reasons_for_creation' => request('proposed-department-name'),
+        'program_goals' => request('program-status'),
+        'program_importance' => request('attachment'),
+        'learning_outcomes' => request('proposed-department-name'),
+        'similar_programs' => request('similar-programs'),
+        'differences' => request('differences'),
+        'similar_programs_international' => request('similar-programs-international'),
+        'estimated_student_enrollment' => request('expected-students'),
+        'potential_beneficiaries' => request('beneficiary-organizations'),
+        'economic_research_feasibility' => request('reasons-for-program'),
+        'related_specialization' => request('related-specialization'),
+        'unemployment_statistics' => request('economic-feasibility-study'),
+        'proposed_tuition_fee' => request('tuition-fees'),
+        'financial_contributions_plan' => request('course-outline'),
+        'additional_staff_required' => request(''),
+        'required_facilities' => request(''),
+        'required_references' => request(''),
+        'scholarship_plan' => request(''),
+        'agreements' => request('department-mission'),
+        'program_impact' => request('justification'),
+        'plan_committee_department' => request('plan-committee-department'),
+        'department_head' => request('department-head'),
+        'plan_committee_college' => request('plan-committee-college'),
+        'dean' => request('dean'),
+
     ]);
     return redirect('/')->with('mssg','Form saved successfully');
 })->middleware('auth');

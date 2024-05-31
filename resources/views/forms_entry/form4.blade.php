@@ -1,6 +1,7 @@
 @extends('layouts.view4')
 
 @section('content')
+<form action="/form4" method="POST">
     <div class="contain">
         <div class="header">
             <img src="logo1.png" alt="شعار الجامعة" class="logo">
@@ -116,11 +117,6 @@
             <label for="program-goals">أهداف البرنامج:</label>
             <textarea id="program-goals" name="program-goals" rows="4"></textarea>
         </div>
-        <div class="form-group">
-            <label for="program-importance">أهمية البرنامج (مبنية على دراسة بحثية علمية تتضمن أعداد الطلبة على مقاعد الدراسة والخريجين وطلبات التوظيف في ديوان الخدمة المدنية ورأي مؤسسات المجتمع المدني مثل النقابات والجمعيات ذات العلاقة ونتائج إحصائيات حاجة سوق العمل العام والخاص محلياً وإقليمياً للتخصص*) *ضرورة إرفاق دراسة حاجة السوق المطلوبة:</label>
-            <label for="attachment">المرفقات:</label>
-            <input type="file" id="attachment" name="attachment">
-        </div>
         
         <div class="form-group">
             <label for="program-status">البرنامج:</label>
@@ -159,14 +155,11 @@
         <div class="form-group">
             <label for="beneficiary-organizations">الجهات المستفيدة من البرنامج:</label>
             <textarea id="beneficiary-organizations" name="beneficiary-organizations" rows="4"></textarea>
-            <small>يرجى تقديم قائمة بالجهات التي يمكن أن تستفيد من البرنامج.</small>
         </div>
         
         <div class="form-group">
             <label for="reasons-for-program">أسباب أخرى تستدعي استحداث البرنامج:</label>
             <textarea id="reasons-for-program" name="reasons-for-program" rows="6"></textarea>
-            <input type="file" id="reasons-documents" name="reasons-documents">
-            <small>يرجى توضيح الأسباب الأخرى التي تستدعي إنشاء البرنامج وإرفاق وثائق تدعم ذلك.</small>
         </div>
         
         <div class="form-group">
@@ -176,8 +169,6 @@
         <div class="form-group">
             <label for="economic-feasibility-study">الجدوى الاقتصادية والبحثية للبرنامج:</label>
             <textarea id="economic-feasibility-study" name="economic-feasibility-study" rows="8"></textarea>
-            <input type="file" id="economic-documents" name="economic-documents">
-            <small>يرجى تقديم دراسة جدوى اقتصادية تفصيلية للبرنامج تتضمن حاجة سوق العمل للتخصص واستطلاع رأي القطاع الخاص والنقابات المعنية وديوان الخدمة المدنية مع كافة الوثائق المطلوبة.</small>
         </div>
         <div class="form-group">
             <label for="unemployment-statistics">الإحصائيات والمسوحات حول نسبة البطالة في التخصص:</label>
@@ -396,13 +387,9 @@
             <label for="justification">مدى تأثير البرنامج على غيره من البرامج الأكاديمية في الجامعة:</label>
             <textarea id="justification" name="justification"></textarea>
         </div>
-        <div class="form-group">
-            <label for="university-consultations">استشارات داخل الجامعة:</label>
-            <input type="file" id="consultation-documents" name="consultation-documents">
-            <small>يرجى إرفاق ما يثبت استشارة القائمين على استحداث البرنامج للجهات المسؤولة وذات العلاقة داخل الجامعة مثل مركز الاعتماد وضمان الجودة، ووحدة الشؤون المالية، ووحدة القبول والتسجيل، وعمادة البحث العلمي، وكلية الدراسات العليا، وغيرها من الأقسام التي تطرح برامج شبيهة.</small>
-        </div>
+      
         <footer>
-            <form class="signature-section">
+            <div class="signature-section">
                 <div class="signature-line">
                     <label for="plan-committee-department">مقرر لجنة الخطة/ القسم:</label>
                     <input type="text" id="plan-committee-department" name="plan-committee-department" placeholder="ادخل الاسم">
@@ -419,9 +406,15 @@
                     <label for="dean">العميد:</label>
                     <input type="text" id="dean" name="dean" placeholder="ادخل الاسم">
                 </div>
-            </form>
+                
+            </div>
         </footer>
+        <div class="centered-button">
+                    <button class="submit-button">Submit</button>
+                </div>
+            
                 
         </div>
     </div>
+    </form>
 @endsection
