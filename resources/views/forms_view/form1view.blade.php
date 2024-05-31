@@ -65,7 +65,7 @@
         <div class="form-group">
             <label for="internal-consultations">الاستشارات داخل الجامعة:</label>
             <p>يرجى التزويد بما يثبت استشارة القائمين على استحداث قسم للجهات المعنية في الجامعة مثل مركز الاعتماد وضمان الجودة ، ووحدة الشؤون المالية ، ووحدة القبول والتسجيل ، وعمادة البحث العلمي ، وكلية الدراسات العليا ، وغيرها...</p>
-            <textarea type="file" id="consultation-file"value="{{$form_values->internal_consultations}}" name="consultation-file" redonly></textarea>
+            <textarea type="file" id="consultation-file"value="{{$form_values->internal_consultations}}" name="consultation-file" readonly></textarea>
         </div>
          
         @if($userlvl ==$formlvl)
@@ -82,7 +82,7 @@
         </form>
         @else
         <div class="comment-section">
-            <textarea id="comment" value="{{$form_comments}}"></textarea>
+            <textarea id="comment" value="{{$form_comments}}" readonly></textarea>
         </div>
         @endif
 @endsection()

@@ -67,7 +67,7 @@
         </form>
         @else
         <div class="comment-section">
-            <textarea id="comment" value="{{$form_comments}}"></textarea>
+            <textarea id="comment" value="{{$form_comments}}"readonly></textarea>
         </div>
         @endif
 

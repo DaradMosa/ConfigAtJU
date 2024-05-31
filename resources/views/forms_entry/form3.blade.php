@@ -1,4 +1,4 @@
-@extends('layouts.app4')
+@extends('layouts.view')
 
 @section('content')
 <form action="/form3" method="POST">

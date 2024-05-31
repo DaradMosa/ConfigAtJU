@@ -2,24 +2,29 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    
-    return view('homepage');
+    $no_permission =['1','4','6'];
+    $userId = auth()->id();
+    $user = DB::table('users')
+    ->select('level')
+    ->where('id', $userId)
+    ->first();
+    return view('homepage',['userlvl'=>$user->level,'no_permission'=>$no_permission]);
 })->middleware('auth');
 
 Route::get('/form1', function () {
     return view('/forms_entry/form1');
 })->middleware('auth');
-;
+
 
 Route::get('/form2', function () {
     return view('/forms_entry/form2');
 })->middleware('auth');
-;
+
 
 Route::get('/form3', function () {
     return view('/forms_entry/form3');
 })->middleware('auth');
-;
+
 
 Route::get('/form4', function () {
     return view('/forms_entry/form4');
@@ -34,6 +39,7 @@ Route::post('/form1', function () {
     $lastInsertId = DB::table('forms')->insertGetId([
         'level' => $user->level+1,  
         'type' => 1,
+        'name' => '('.request('department-name').')استحداث قسم أكاديمي',
         'college' => $user->college
     ]);
     DB::table('department')->insert([
@@ -66,6 +72,7 @@ Route::post('/form2', function () {
     $lastInsertId = DB::table('forms')->insertGetId([
         'level' => $user->level+1,
         'type' => 2,
+        'name' => '('.request('department-name').')استحداث كلية',
         'college' => $user->college
     ]);
     DB::table('college')->insert([
@@ -97,6 +104,7 @@ Route::post('/form3', function () {
     $lastInsertId = DB::table('forms')->insertGetId([
         'level' => $user->level+1,
         'type' => 3,
+        'name' => '('.request('current-department-name').')تعديل مسمى قسم أكاديمي / كلية',
         'college' => $user->college
     ]);
     DB::table('departmentnamechange')->insert([
@@ -128,7 +136,6 @@ Route::post('/view/{formID}', function ($formID) {
         DB::table('forms')
         ->where('id', $formID)
         ->update([
-            'level' => DB::raw('level + 1'),
             'status' => 'accepted',
             'comments' => request('comment')
         ]);
@@ -137,7 +144,6 @@ Route::post('/view/{formID}', function ($formID) {
         DB::table('forms')
         ->where('id', $formID)
         ->update([
-            'level' => DB::raw('level + 1'),
             'status' => 'rejected',
             'comments' => request('comment')
         ]);
@@ -205,7 +211,13 @@ Route::get('/messegs', function () {
                             ->get();
         $forms_status = DB::table('forms')
                             ->where('level', '>', $user->level)
-                            ->orwhere('status', 'rejected')
+                            ->where('status', 'pending')
+                            ->orderBy('date', 'asc')
+                            ->get();
+
+        $forms_status_fin = DB::table('forms')
+                            ->where('level', '>', $user->level -1)
+                            ->where('status', 'rejected')
                             ->orwhere('status', 'accepted')
                             ->orderBy('date', 'asc')
                             ->get();
@@ -220,7 +232,14 @@ Route::get('/messegs', function () {
         $forms_status = DB::table('forms')
                             ->where('level', '>', $user->level)
                             ->where('college', $user->college)
-                            ->orwhere('status', 'rejected')
+                            ->where('status', 'pending')
+                            ->orderBy('date', 'asc')
+                            ->get();
+
+        $forms_status_fin = DB::table('forms')
+                            ->where('level', '>', $user->level -1)
+                            ->where('college', $user->college)
+                            ->where('status', 'rejected')
                             ->orwhere('status', 'accepted')
                             ->orderBy('date', 'asc')
                             ->get();
@@ -232,7 +251,7 @@ Route::get('/messegs', function () {
     ->get();
    
 
-    return view('messegs',['userlvl' => $user->level,'forms_for_confirmation' => $forms_for_confirmation,'forms_status' =>$forms_status,'username' => $username]);
+    return view('messegs',['userlvl' => $user->level,'forms_for_confirmation' => $forms_for_confirmation,'forms_status' =>$forms_status,'username' => $username,'forms_status_fin'=>$forms_status_fin]);
 })->middleware('auth');
 
 
