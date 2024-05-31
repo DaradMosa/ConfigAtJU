@@ -317,7 +317,7 @@
                         <!-- الصفوف الموجودة في الجدول ستتم إضافتها هنا من خلال JavaScript -->
                     </tbody>
                 </table>
-                <button id="add-current-lab-btn">إdfضافة مشغل/مختبر حالي</button>
+                <button id="add-current-lab-btn">إdfضاfffفة مشغل/مختبر حالي</button>
             </div>
         
             <div id="proposed-labs-container">
