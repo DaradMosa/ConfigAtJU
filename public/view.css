@@ -3,6 +3,11 @@ body {
 
     background-color: #f4f4f4;
 }
+h2{
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    color: #004d99;
+}
 .contain {
     direction: rtl;
     max-width: 800px;
@@ -124,4 +129,3 @@ body {
     color: white;
     cursor: pointer;
 }
-  

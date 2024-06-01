@@ -2,12 +2,12 @@
 
 @section('content')
 <form action="/form4" method="POST">
+    @csrf
     <div class="contain">
         <div class="header">
-            <img src="logo1.png" alt="شعار الجامعة" class="logo">
             <h1>مقترح استحداث برنامج أكاديمي</h1>
-            <img src="logo2.png" alt="شعار آخر" class="logo">
         </div>
+        <div class="table-responsive">
         <table class="styled-table">
             <tr>
                 <th>اسم البرنامج باللغة العربية</th>
@@ -58,11 +58,12 @@
                 <td><input type="date" id="submission-date" name="submission-date"></td>
             </tr>
         </table>
-        
+        </div>
         <div class="form-group">
             <label for="college-name">نبذة عن البرنامج المقترح</label>
             <input type="text" id="college-name" name="college-name">
         </div>
+        <div class="table-responsive">
         <table class="current-programs-table">
             <tr>
                 <th>البرنامج</th>
@@ -95,7 +96,7 @@
                 <td><input type="number" name="phd-graduates-last-3-years"></td>
             </tr>
         </table>
-        
+        </div>
         <div class="notes">
             <p>ملاحظات هامة:</p>
             <p>* لا يجوز لأي جامعة البدء في برنامج ماجستير إلا بعد أن يكون قد خرجًّت الجامعة ثلاث دفعات من برنامج البكالوريوس المماثل (يستثنى من ذلك البرامج متعددة التخصصات).</p>
@@ -173,7 +174,7 @@
         <div class="form-group">
             <label for="unemployment-statistics">الإحصائيات والمسوحات حول نسبة البطالة في التخصص:</label>
             <textarea id="unemployment-statistics" name="unemployment-statistics" rows="6"></textarea>
-            <input type="file" id="unemployment-documents" name="unemployment-documents">
+            <input type="text" id="unemployment-documents" name="unemployment-documents">
             <small>يرجى تقديم الإحصائيات والمسوحات الصادرة عن جهات رسمية تبين نسبة البطالة في هذا التخصص (إن وُجد) مع إرفاق الوثائق المطلوبة.</small>
         </div>
         <div class="form-group">
@@ -187,9 +188,7 @@
         
         <div class="form-group">
             <label for="research-list">قائمة أعضاء هيئة التدريس:</label>
-
-            <h1>أعضاء هيئة التدريس بالقسم للعام الجامعي <p contenteditable="true"></p></h1>
-
+            <div class="table-responsive">
             <table id="faculty-table">
                 <thead>
                     <tr>
@@ -211,14 +210,15 @@
                 <tbody id="faculty-data">
                 </tbody>
             </table>
-            <button id="add-member-btn">إضافة عضو</button>
+            </div>
+            <button  type="button" id="add-member-btn">إضافة عضو</button>
             <script src="script.js"></script>
         </div>
         
         
         <div class="form-group">
         <label for="research-list">قائمة بأبحاث أعضاء هيئة التدريس:</label>
-        <h1>أبحاث أعضاء هيئة التدريس</h1>
+        <div class="table-responsive">
         <table id="researches-table">
             <thead>
                 <tr>
@@ -233,16 +233,18 @@
             <tbody id="researches-data">
             </tbody>
         </table>
-        <button id="add-research-btn">إضافة بحث</button>
+        </div>
+        <button  type="button" id="add-research-btn">إضافة بحث</button>
         <script src="researches.js"></script>
     </div>
         
         <div class="form-group">
             <label for="technical-administrative-staff">قائمة بالكادر الفني والإداري:</label>
-            <h1>الفنيون والإداريون بالقسم للعام</h1>
+            
             <div id="technicians-container">
-                <h2>الفنيون</h2>
                 
+                <label>الفنيون</label>
+                <div class="table-responsive">
                 <table id="technicians-table">
                     <thead>
                         <tr>
@@ -259,13 +261,14 @@
                         <!-- الصفوف الموجودة في الجدول ستتم إضافتها هنا من خلال JavaScript -->
                     </tbody>
                 </table>
-                <button id="add-technician-btn">إضافة فني</button>
+                </div>
+                <button  type="button" id="add-technician-btn">إضافة فني</button>
                 
             </div>
         
             <div id="admins-container">
-                <h2>الإداريون</h2>
-               
+                <label>الإداريون</label>
+                <div class="table-responsive">
                 <table id="admins-table">
                     <thead>
                         <tr>
@@ -282,7 +285,8 @@
                         <!-- الصفوف الموجودة في الجدول ستتم إضافتها هنا من خلال JavaScript -->
                     </tbody>
                 </table>
-                 <button id="add-admin-btn">إضافة إداري</button> 
+                </div>
+                 <button  type="button" id="add-admin-btn">إضافة إداري</button> 
                  <script src="technicians_admins.js"></script>
             </div>
         
@@ -291,11 +295,10 @@
 
         <div class="form-group">
             <label for="research-list">قائمة بالمرافق والمعدات والأجهزة المطلوبة:</label>
-            <h1>مشاغل ومختبرات القسم</h1>
 
             <div id="current-labs-container">
-                <h2>المشغلات/المختبرات الحالية</h2>
-                
+                <label>المشغلات/المختبرات الحالية</label>
+                <div class="table-responsive">
                 <table id="current-labs-table">
                     <thead>
                         <tr>
@@ -308,12 +311,13 @@
                         <!-- الصفوف الموجودة في الجدول ستتم إضافتها هنا من خلال JavaScript -->
                     </tbody>
                 </table>
-                <button id="add-current-lab-btn">إضافة مشغل/مختبر حالي</button>
+                </div>
+                <button  type="button" id="add-current-lab-btn">إضافة مشغل/مختبر حالي</button>
             </div>
         
             <div id="proposed-labs-container">
-                <h2>المشغلات/المختبرات المقترحة</h2>
-                
+                <label>المشغلات/المختبرات المقترحة</label>
+                <div class="table-responsive">
                 <table id="proposed-labs-table">
                     <thead>
                         <tr>
@@ -326,7 +330,8 @@
                         <!-- الصفوف الموجودة في الجدول ستتم إضافتها هنا من خلال JavaScript -->
                     </tbody>
                 </table>
-                <button id="add-proposed-lab-btn">إضافة مشغل/مختبر مقترح</button>
+                </div>
+                <button  type="button" id="add-proposed-lab-btn">إضافة مشغل/مختبر مقترح</button>
             </div>
         
             <script src="labs.js"></script>
@@ -334,10 +339,9 @@
 
         <div class="form-group">
             <label for="required-references-list">قائمة بالمراجع المطلوبة للبرنامج:</label>
-            <h1>قائمة بالمراجع المطلوبة للبرنامج ومدى توافرها</h1>
 
     <div id="references-container">
-        
+    <div class="table-responsive">
         <table id="references-table">
             <thead>
                 <tr>
@@ -351,16 +355,16 @@
                 <!-- الصفوف الموجودة في الجدول ستتم إضافتها هنا من خلال JavaScript -->
             </tbody>
         </table>
-        <button id="add-reference-btn">إضافة مرجع</button>
+    </div>
+        <button  type="button" id="add-reference-btn">إضافة مرجع</button>
     </div>
      <script src="references.js"></script>
         </div>
         <div class="form-group">
             <label for="sending-plan-table">جدول خطة الإيفاد:</label>
-            <h1>أسماء الطلبة الموفدين والجامعات الموفد إليها والتخصصات الدقيقة وخطة إيفاد</h1>
 
             <div id="students-container">
-                <button id="add-student-btn">إضافة طالب موفد</button>
+            <div class="table-responsive">
                 <table id="students-table">
                     <thead>
                         <tr>
@@ -376,6 +380,8 @@
                         <!-- الصفوف الموجودة في الجدول ستتم إضافتها هنا من خلال JavaScript -->
                     </tbody>
                 </table>
+            </div>
+                <button  type="button" id="add-student-btn">إضافة طالب موفد</button>
             </div>
             <script src="students.js"></script>
         </div>
@@ -409,12 +415,9 @@
                 
             </div>
         </footer>
-        <div class="centered-button">
-                    <button class="submit-button">Submit</button>
-                </div>
-            
-                
-        </div>
+    <div class="centered-button">
+        <button class="submit-button">Submit</button>
     </div>
+            
     </form>
 @endsection

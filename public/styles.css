@@ -6,11 +6,13 @@ body {
 }
 .contain {
     direction: rtl;
-    width: 60%;
+    max-width: 800px;
     margin: auto;
-    border: 1px solid #000;
-    padding: 10px;
+    padding: 20px;
     background-color: #fff;
+    border: 1px solid #a7a7a7;
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .header {
     text-align: center;
@@ -287,4 +289,10 @@ p[contenteditable="true"] {
 
 p[contenteditable="true"]:focus {
     outline: none; /* إزالة التأثير التشعبي عند التركيز */
+}
+
+.table-responsive {
+    overflow-x: auto;
+    max-width: 100%;
+    overflow-y: hidden;
 }

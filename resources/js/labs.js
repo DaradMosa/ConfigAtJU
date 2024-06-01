@@ -13,10 +13,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const newRow = currentLabsData.insertRow();
 
         newRow.innerHTML = `
-            <td>${currentLabNumber++}</td>
-            <td><input type="text" placeholder="اسم المشغل/المختبر"></td>
-            <td><input type="text" placeholder="ملاحظات"></td>
+            <td>${currentLabNumber}</td>
+            <td><input type="text" name="current_labs[${currentLabNumber}][lab_name]" placeholder="اسم المشغل/المختبر"></td>
+            <td><input type="text" name="current_labs[${currentLabNumber}][notes]" placeholder="ملاحظات"></td>
         `;
+        currentLabNumber++;
     }
 
     function addProposedLab() {
@@ -24,9 +25,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const newRow = proposedLabsData.insertRow();
 
         newRow.innerHTML = `
-            <td>${proposedLabNumber++}</td>
-            <td><input type="text" placeholder="اسم المشغل/المختبر"></td>
-            <td><input type="text" placeholder="ملاحظات"></td>
+            <td>${proposedLabNumber}</td>
+            <td><input type="text" name="proposed_labs[${proposedLabNumber}][lab_name]" placeholder="اسم المشغل/المختبر"></td>
+            <td><input type="text" name="proposed_labs[${proposedLabNumber}][notes]" placeholder="ملاحظات"></td>
         `;
+        proposedLabNumber++;
     }
 });
