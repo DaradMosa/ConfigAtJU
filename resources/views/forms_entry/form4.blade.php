@@ -11,11 +11,11 @@
         <table class="styled-table">
             <tr>
                 <th>اسم البرنامج باللغة العربية</th>
-                <td><input type="text" id="program-name-ar" name="program-name-ar"></td>
+                <td><input type="text" id="program-name-ar" required name="program-name-ar"></td>
             </tr>
             <tr>
                 <th>اسم البرنامج باللغة الإنجليزية</th>
-                <td><input type="text" id="program-name-en" name="program-name-en"></td>
+                <td><input type="text" id="program-name-en" required name="program-name-en"></td>
             </tr>
             <tr>
                 <th>مستوى البرنامج</th>

@@ -12,14 +12,15 @@ class FormSubmissionController extends Controller
     {
         $userId = Auth::id();
         $user = DB::table('users')
-            ->select('level', 'college')
+            ->select('level', 'college','name')
             ->where('id', $userId)
             ->first();
 
         $lastInsertId = DB::table('forms')->insertGetId([
             'level' => $user->level + 1,
-            'date'=>date("Y/m/d"),
+            'submitted_by'=> $user -> name,
             'type' => 1,
+            'date' => date("Y/m/d"),
             'name' => '(' . $request->input('department-name') . ') استحداث قسم أكاديمي',
             'college' => $user->college,
         ]);
@@ -50,13 +51,14 @@ class FormSubmissionController extends Controller
     {
         $userId = Auth::id();
         $user = DB::table('users')
-            ->select('level', 'college')
+            ->select('level', 'college','name')
             ->where('id', $userId)
             ->first();
 
         $lastInsertId = DB::table('forms')->insertGetId([
             'level' => $user->level + 1,
-            'date'=>date("Y/m/d"),
+            'submitted_by'=> $user -> name,
+            'date' => date("Y/m/d"),
             'type' => 2,
             'name' => '(' . $request->input('department-name') . ') استحداث كلية',
             'college' => $user->college,
@@ -84,14 +86,15 @@ class FormSubmissionController extends Controller
     {
         $userId = Auth::id();
         $user = DB::table('users')
-            ->select('level', 'college')
+            ->select('level', 'college','name')
             ->where('id', $userId)
             ->first();
 
         $lastInsertId = DB::table('forms')->insertGetId([
             'level' => $user->level + 1,
+            'submitted_by'=> $user -> name,
+            'date' => date("Y/m/d"),
             'type' => 3,
-            'date'=>date("Y/m/d"),
             'name' => '(' . $request->input('current-department-name') . ') تعديل مسمى قسم أكاديمي / كلية',
             'college' => $user->college,
         ]);
@@ -119,13 +122,14 @@ class FormSubmissionController extends Controller
     {
         $userId = Auth::id();
         $user = DB::table('users')
-            ->select('level', 'college')
+            ->select('level', 'college','name')
             ->where('id', $userId)
             ->first();
 
         $lastInsertId = DB::table('forms')->insertGetId([
             'level' => $user->level + 1,
-            'date'=>date("Y/m/d"),
+            'submitted_by'=> $user -> name,
+            'date' => date("Y/m/d"),
             'type' => 4,
             'name' => '(' . $request->input('program-name-ar') . ') مقترح استحداث برنامج أكاديمي',
             'college' => $user->college,

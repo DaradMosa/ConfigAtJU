@@ -10,7 +10,7 @@
             @foreach ($forms_for_confirmation as $form)
             <div class="form-item" id="list1">
             <a href="/view/{{ $form->id }}">
-            <div>{{ $form->name }} submited at: {{ $form->date }}</div>
+            <div>{{ $form->name }} submited by {{ $form->submitted_by }} at: {{ $form->date }}</div>
             <div class="stats">
                 <p>waiting your confirmation</p>
             </div>
@@ -24,7 +24,7 @@
                 @foreach ($forms_status as $form)
                     <div class="form-item" id="list1">
                             <a href="/view/{{ $form->id }}">
-                            <div>{{ $form->name }}  submited at: {{ $form->date }}</div>
+                            <div>{{ $form->name }} submited by {{ $form->submitted_by }} at: {{ $form->date }}</div>
                             <div class="stats">
                                 <p>status: waiting confirmation from 
                                 @foreach ($username as $user)
@@ -44,7 +44,7 @@
                 @foreach ($forms_status_fin as $form)
                     <div class="form-item" id="list1">
                             <a href="/view/{{ $form->id }}">
-                            <div>{{ $form->name }}  submited at: {{ $form->date }}</div>
+                            <div>{{ $form->name }} submited by {{ $form->submitted_by }} at: {{ $form->date }}</div>
                             <div class="stats">
                                 <p>status: {{$form->status}} by
                                 @foreach ($username as $user)

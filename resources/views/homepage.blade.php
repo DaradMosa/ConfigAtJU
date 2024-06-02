@@ -3,8 +3,11 @@
 
 @section('content')
     @php
-        $isDisabled = in_array($userlvl, $no_permission);
-        $buttonAttributes = $isDisabled ? 'disabled style="background-color:#d6d6d6;"' : '';
+        $isDisabled1 = in_array($userlvl, $no_permission1);
+        $isDisabled2 = in_array($userlvl, $no_permission2);
+        $isDisabled3 = in_array($userlvl, $no_permission3);
+        $isDisabled4 = in_array($userlvl, $no_permission4);
+
     @endphp
         
         <div class="last-buttons">
@@ -15,13 +18,13 @@
         </div>
         <div class="button-row">
             <button class="form-button"
-            @if($isDisabled) 
+            @if($isDisabled1) 
                 disabled 
                 style="background-color:#d6d6d6;" 
             @endif  
     onclick="buttonPressed('Form 1', 'form2')" >استحداث كلية</button>
             <button class="form-button"    
-            @if($isDisabled) 
+            @if($isDisabled2) 
                 disabled 
                 style="background-color:#d6d6d6;" 
             @endif
@@ -29,13 +32,13 @@
         </div>
         <div class="button-row">
             <button class="form-button"    
-            @if($isDisabled) 
+            @if($isDisabled3) 
                 disabled 
                 style="background-color:#d6d6d6;" 
             @endif
      onclick="buttonPressed('Form 3', 'form4')" >استحداث برنامج اكاديمي</button>
             <button class="form-button"    
-            @if($isDisabled) 
+            @if($isDisabled4) 
                 disabled 
                 style="background-color:#d6d6d6;" 
             @endif

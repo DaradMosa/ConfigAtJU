@@ -10,15 +10,15 @@
 
         <div class="form-group">
             <label for="college-name">اسم الكلية</label>
-            <input type="text" id="college-name" name="college-name">
+            <input type="text" id="college-name" required name="college-name">
         </div>
         <div class="form-group">
             <label for="current-department-name">اسم القسم / الكلية الحالي</label>
-            <input type="text" id="current-department-name" name="current-department-name">
+            <input type="text" id="current-department-name" required name="current-department-name">
         </div>
         <div class="form-group">
             <label for="proposed-department-name">اسم القسم / الكلية المقترح</label>
-            <input type="text" id="proposed-department-name" name="proposed-department-name">
+            <input type="text" id="proposed-department-name" required name="proposed-department-name">
         </div>
         <div class="form-group">
             <label for="date">تاريخ تقديم الطلب:</label>
@@ -57,9 +57,7 @@
             <p>يرجى التزويد بما يثبت استشارة القائمين على استحداث قسم للجهات المعنية في الجامعة مثل مركز الاعتماد وضمان الجودة ، ووحدة الشؤون المالية ، ووحدة القبول والتسجيل ، وعمادة البحث العلمي ، وكلية الدراسات العليا ، وغيرها... </p>
             <textarea id="consultation-file" name="consultation-file"></textarea>
         </div>
-        <div class="footer">
-            <p contenteditable="true">العميد:____________________________ التوقيع____________________________</p>
-        </div>
+      
         <div class="centered-button">
             <button class="submit-button">Submit</button>
           </div>
