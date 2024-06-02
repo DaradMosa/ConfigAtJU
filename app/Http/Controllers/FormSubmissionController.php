@@ -18,7 +18,7 @@ class FormSubmissionController extends Controller
 
         $lastInsertId = DB::table('forms')->insertGetId([
             'level' => $user->level + 1,
-            'date' => date("Y/m/d"),
+            'date'=>date("Y/m/d"),
             'type' => 1,
             'name' => '(' . $request->input('department-name') . ') استحداث قسم أكاديمي',
             'college' => $user->college,
@@ -56,7 +56,7 @@ class FormSubmissionController extends Controller
 
         $lastInsertId = DB::table('forms')->insertGetId([
             'level' => $user->level + 1,
-            'date' => date("Y/m/d"),
+            'date'=>date("Y/m/d"),
             'type' => 2,
             'name' => '(' . $request->input('department-name') . ') استحداث كلية',
             'college' => $user->college,
@@ -90,8 +90,8 @@ class FormSubmissionController extends Controller
 
         $lastInsertId = DB::table('forms')->insertGetId([
             'level' => $user->level + 1,
-            'date' => date("Y/m/d"),
             'type' => 3,
+            'date'=>date("Y/m/d"),
             'name' => '(' . $request->input('current-department-name') . ') تعديل مسمى قسم أكاديمي / كلية',
             'college' => $user->college,
         ]);
@@ -125,8 +125,8 @@ class FormSubmissionController extends Controller
 
         $lastInsertId = DB::table('forms')->insertGetId([
             'level' => $user->level + 1,
+            'date'=>date("Y/m/d"),
             'type' => 4,
-            'date' => date("Y/m/d"),
             'name' => '(' . $request->input('program-name-ar') . ') مقترح استحداث برنامج أكاديمي',
             'college' => $user->college,
         ]);
