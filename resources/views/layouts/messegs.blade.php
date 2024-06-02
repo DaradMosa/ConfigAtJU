@@ -26,7 +26,6 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/University_of_Jordan_Logo.svg" alt="شعار الجامعة" width="50" >
                 </a>
-                <a  class="navbar-brand" href="{{ url('/') }}" style="margin: 0px;">ConfigAtJU</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
